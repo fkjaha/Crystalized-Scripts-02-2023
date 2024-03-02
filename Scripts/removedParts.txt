@@ -1,0 +1,38 @@
+﻿// + Quaternion.AngleAxis(GetRandomRotationInBounds(xRotationBounds), Vector3.right)
+               // * Quaternion.AngleAxis(GetRandomRotationInBounds(yRotationBounds), Vector3.up)
+               // * Quaternion.AngleAxis(GetRandomRotationInBounds(zRotationBounds), Vector3.forward)
+               // * Vector3.one 
+               
+public class UpgradableSlotUI : MonoBehaviour
+               {
+                   [SerializeField] private Button button;
+                   // [SerializeField] private Image image;
+                   [SerializeField] private TextMeshProUGUI label;
+                   [SerializeField] private TextMeshProUGUI costText;
+                   // [SerializeField] private TextMeshProUGUI description;
+               
+                   public void Initialize(UnityAction action)
+                   {
+                       button.onClick.RemoveAllListeners();
+                       button.onClick.AddListener(() =>
+                       {
+                           action?.Invoke();
+                       });
+                   }
+                   
+                   public void UpdateSlotView(UpgradableInfo info)
+                   {
+                       // image.sprite = info.GetSprite;
+                       label.text = info.GetLabel;
+                       // description.text = info.GetDescription;
+                       button.interactable = true;
+                   }
+                   
+                   
+// if (hitResult == null || !hitResult.TryGetComponent(out hitBody))
+        // {
+        //     hitResult = crystalRaycaster.GetTargetedSurroundingRaycastResult(crystal.GetRandomCrystalPart().transform.position);
+        //     
+        //     if(hitResult != null)  
+        //         hitResult.TryGetComponent(out hitBody);
+        // }
